@@ -10,6 +10,16 @@ netflix_df_pivot_table = netflix_df.pivot_table(values='duration', index='genre'
 
 print(netflix_df_pivot_table)
 
+# Pivot tables are just DataFrames with sorted indexes
+# We can use .loc[] for slicing pivot tables
+
 slicing_pivot_table = netflix_df_pivot_table.loc['Action':'Comedies']
 
 print(slicing_pivot_table)
+
+# The methods for calculating summary statistics on a DataFrame, such as mean, have an axis argument
+# By default axis='index', which means "calculate the statistic across rows"
+
+#To calculate a summary statistic for each row - "across the columns", we set axis="columns"
+
+print(netflix_df_pivot_table.mean(axis='columns'))
